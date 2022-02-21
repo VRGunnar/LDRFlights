@@ -10,11 +10,12 @@ const Wrapper = styled.div`
   margin-right: auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  box-sizing: border-box;
 `;
 const Column = styled.div`
   background: #fff;
   height: 100vh;
-  overflow: scroll;
+  overflow: none;
 
   &:last-child {
     background: #000;
@@ -49,7 +50,7 @@ const Airline = () => {
   }, []);
 
   const onReviewSubmit = (e, review) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     const crsfToken = document.querySelector("[name=csrf-token]").content;
     axios.defaults.headers.common["X-CSRF-TOKEN"] = crsfToken;

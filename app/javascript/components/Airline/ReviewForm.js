@@ -52,8 +52,9 @@ const Field = styled.div`
     min-height: 50px;
     border-radius: 4px;
     border: 1px solid #e6e6e6;
-    margin: 12px 0;
+    margin: 0 0 12px 0;
     padding: 12px;
+    width: 97%;
   }
 
   textarea {
@@ -68,6 +69,9 @@ const Field = styled.div`
 const Wrapper = styled.div`
   background: #fff;
   padding: 20px;
+  background: #000;
+  height: 100vh;
+  padding-top: 100px;
 `
 const SubmitBtn = styled.div`
   color: #fff;
@@ -77,21 +81,25 @@ const SubmitBtn = styled.div`
   font-size: 18px;
   cursor: pointer;
   transition: ease-in-out 0.1s;
-  border: 1px solid #333;
+  border: 1px solid #fff;
+  width: 97%;
+  margin-top: 20px;
+  text-align: center;
 
   &:hover {
     background: #fff;
-    color: #333;
+    color: #000;
     border: 1px solid #fff;
   }
 `
 const Headline = styled.div`
-  padding: 20px;
+  padding: 20px 0;
   font-size: 28px;
   font-weight: bold;
+  color: #fff;
 `
 const RatingTitle = styled.div`
-  font-size: 28px;
+  font-size: 20px;
   padding-bottom: 20px;
   font-weight: bold;
 `;
@@ -169,7 +177,7 @@ const ReviewForm = (props) => {
             </RatingBox>
           </RatingContainer>
         </Field>
-        <SubmitBtn>
+        <SubmitBtn onClick={onSubmit}>
           Submit Your Review
         </SubmitBtn>
       </form>
