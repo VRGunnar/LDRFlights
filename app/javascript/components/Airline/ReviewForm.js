@@ -75,20 +75,18 @@ const Wrapper = styled.div`
 `
 const SubmitBtn = styled.div`
   color: #fff;
-  background: #333;
+  background: #66AD0C;
   border-radius: 4px;
   padding: 12px;
   font-size: 18px;
   cursor: pointer;
   transition: ease-in-out 0.1s;
-  border: 1px solid #fff;
+  border: 1px solid #66AD0C;
   width: 97%;
   margin-top: 20px;
   text-align: center;
 
   &:hover {
-    background: #fff;
-    color: #000;
     border: 1px solid #fff;
   }
 `

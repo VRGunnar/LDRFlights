@@ -4,6 +4,7 @@ import Header from "./Header";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import ReviewForm from "./ReviewForm";
+import Review from "./Review";
 
 const Wrapper = styled.div`
   margin-left: auto;
@@ -50,7 +51,7 @@ const Airline = () => {
   }, []);
 
   const onReviewSubmit = (e, review) => {
-    // e.preventDefault();
+    e.preventDefault();
 
     const crsfToken = document.querySelector("[name=csrf-token]").content;
     axios.defaults.headers.common["X-CSRF-TOKEN"] = crsfToken;
@@ -60,12 +61,19 @@ const Airline = () => {
         review: { ...review, airline_id: airline_id },
       })
       .then((resp) => {
-        const included = [...airline.included, resp.data];
+        const included = [...airline.included, resp.data.data];
         setAirline({ ...airline, included });
         setReview({ title: "", description: "", score: 0 });
       })
       .catch((resp) => {});
   };
+
+  let reviews;
+  if (loaded && airline.included) {
+    reviews = airline.included.map((item, index) => {
+      return <Review key={index} attributes={item.attributes} id={item.id} />;
+    });
+  }
 
   return (
     <Wrapper>
@@ -76,7 +84,7 @@ const Airline = () => {
               <Header
                 attributes={[airline.data.attributes, airline.included]}
               />
-              <div className="reviews"></div>
+              {reviews}
             </Main>
           </Column>
           <Column>
