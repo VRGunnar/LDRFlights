@@ -82,5 +82,4 @@ test:
 production:
   <<: *default
   database: LDR_flights_production
-  username: LDR_flights
-  password: <%= ENV["LDR_FLIGHTS_DATABASE_PASSWORD"] %>
+  url:  <%= ENV.fetch("DATABASE_URL", "") %>
